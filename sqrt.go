@@ -33,7 +33,8 @@ func main () {
   switch *method {
   case "bisection":
     methods.Bisection(&data)
-//  case "secant":
+  case "secant":
+    methods.Secant(&data)
  // case "modified-secant":
   //case "newton-raphson":
   //case "fixed-point":

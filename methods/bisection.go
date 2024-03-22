@@ -12,7 +12,7 @@ func Bisection(d *common.Data) {
 	// check step
 	check(d.F, d.A, d.B)
 	// calculate number of iteration
-	n, _ := common.CalculateN(d.A, d.B, d.E)
+	n, _ := calculateN(d.A, d.B, d.E)
 
 	// construct record
 	record := Record{
@@ -25,6 +25,10 @@ func Bisection(d *common.Data) {
 	fmt.Println("------------------- ")
 	fmt.Println("*** The Final Result is: ", record.C)
 	fmt.Println("------------------- ")
+}
+
+func calculateN(a float64, b float64, e float64) (float64, error) {
+  return math.Round((math.Log2((b-a) / (e)))), nil
 }
 
 func check(f string, a float64, b float64) {
