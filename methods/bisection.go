@@ -1,67 +1,69 @@
-package methods 
+package methods
 
-import(
-  "fmt"
-  "sqrt/common"
-  "os"
-  "math"
+import (
+	"fmt"
+	"math"
+	"os"
+	"sqrt/common"
 )
 
-func Bisection (d *common.Data){
+func Bisection(d *common.Data) {
 
-  check(d.F, d.A, d.B)
-  n, _ := calculateN(d.A, d.B, d.E)
+	// check step
+	check(d.F, d.A, d.B)
+	// calculate number of iteration
+	n, _ := common.CalculateN(d.A, d.B, d.E)
 
-  // construct record
-  record := Record{
-    A: d.A,
-    B: d.B,
-    C: (d.A + d.B) / 2,
-  }
-  fa, _ := common.OneVariableFunction(d.F, d.A) 
-  fb, _ := common.OneVariableFunction(d.F, d.B)
-  fc, _ := common.OneVariableFunction(d.F, (d.A + d.B) / 2)
-  record.Fa = fa
-  record.Fb = fb
-  record.Fc = fc
+	// construct record
+	record := Record{
+		A: d.A,
+		B: d.B,
+	}
+	// iterate
+	iterate(&record, &d.F, &n, d.E)
 
-  iterate(&record, &n, d.E)
+	fmt.Println("------------------- ")
+	fmt.Println("*** The Final Result is: ", record.C)
+	fmt.Println("------------------- ")
 }
 
-func check(f string, a float64, b float64){
-  // calculate f(a)
-//  fa := strings.Replace(F, "x", fmt.Sprintf("%.2f", A), -1)
-  ra, err := common.OneVariableFunction(f, a)
-  if err != nil {
-    fmt.Println("Error:", err)
-    return
-  }
-
-  // calculate f(b)
- // fb := strings.Replace(F, "x", fmt.Sprintf("%.2f", B), -1)
-  rb, err := common.OneVariableFunction(f, b)
-  if err != nil {
-    fmt.Println("Error:", err)
-    return
-  }
-
-  if((ra * rb) > 0){
-    fmt.Println("This function cannot be calculated")
-    os.Exit(1)
-  }
+func check(f string, a float64, b float64) {
+	fa, _ := common.OneVariableFunction(f, a)
+	fb, _ := common.OneVariableFunction(f, b)
+	if (fa * fb) > 0 {
+		fmt.Println("This function will not be calculated")
+		os.Exit(1)
+	}
 }
 
-func calculateN(a float64, b float64, e float64) (float64, error) {
-  return math.Round((math.Log2((b-a) / (e)))), nil
-}
+func iterate(r *Record, f *string, n *float64, e float64) {
+	var i = 1
+	for {
+		// f() calcualtions
+		r.C = (r.A + r.B) / 2
+		fa, _ := common.OneVariableFunction(*f, r.A)
+		fb, _ := common.OneVariableFunction(*f, r.B)
+		fc, _ := common.OneVariableFunction(*f, r.C)
+		r.Fa = fa
+		r.Fb = fb
+		r.Fc = fc
 
-func iterate(r *Record, n *float64, e float64){
-  fmt.Println(*r)
-  // f()
+		// logger
+		fmt.Println(i, "===>  a= ", r.A, ", b= ", r.B, ", c= ", r.C, ", f(a)=", r.Fa, ", f(b)=", r.Fb, ", f(c)=", r.Fc)
 
-  // swap
+		// stop condition check
+		if float64(i) == *n || math.Abs(r.Fc) < e {
+			break
+		}
 
-  // logger
+		// swap
+		if r.Fa*r.Fc > 1 {
+			r.A = r.C
+		} else {
+			r.B = r.C
+		}
 
-  // stop condition
+		// increment the counter
+		i++
+	}
 }
