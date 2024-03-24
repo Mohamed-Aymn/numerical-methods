@@ -39,7 +39,8 @@ func main () {
     methods.ModifiedSecant(&data)
   case "newton":
     methods.Newton(&data)
-  //case "fixed-point":
+  case "fixed-point":
+    methods.FixedPoint(&data)
   default:
     fmt.Println("choose another method")
 }
