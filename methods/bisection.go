@@ -7,10 +7,12 @@ import (
 	"sqrt/common"
 )
 
-func Bisection(d *common.Data) {
+type BisectionStrategy struct {}
 
+func (s *BisectionStrategy) Execute(d *common.Data) {
 	// check step
 	check(d.F, d.A, d.B)
+
 	// calculate number of iteration
 	n, _ := calculateN(d.A, d.B, d.E)
 
@@ -27,11 +29,7 @@ func Bisection(d *common.Data) {
 	fmt.Println("------------------- ")
 }
 
-func calculateN(a float64, b float64, e float64) (float64, error) {
-  return math.Round((math.Log2((b-a) / (e)))), nil
-}
-
-func check(f string, a float64, b float64) {
+var check = func(f string, a float64, b float64) {
 	fa, _ := common.OneVariableFunction(f, a)
 	fb, _ := common.OneVariableFunction(f, b)
 	if (fa * fb) > 0 {
@@ -40,7 +38,11 @@ func check(f string, a float64, b float64) {
 	}
 }
 
-func iterate(r *Record, f *string, n *float64, e float64) {
+var calculateN = func(a float64, b float64, e float64) (float64, error) {
+  return math.Round((math.Log2((b-a) / (e)))), nil
+}
+
+var iterate = func(r *Record, f *string, n *float64, e float64) {
 	var i = 1
 	for {
 		// f() calcualtions

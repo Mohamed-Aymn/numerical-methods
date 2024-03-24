@@ -6,6 +6,7 @@ import (
   "sqrt/common"
 )
 
+type Secant struct {}
 func Secant (d *common.Data) {
   // calculateN
   n, _ := secantCalculateN(d.A, d.B, d.E)
