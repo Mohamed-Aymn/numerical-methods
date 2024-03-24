@@ -35,7 +35,8 @@ func main () {
     methods.Bisection(&data)
   case "secant":
     methods.Secant(&data)
- // case "modified-secant":
+  case "modified-secant":
+    methods.ModifiedSecant(&data)
   //case "newton-raphson":
   //case "fixed-point":
   default:
