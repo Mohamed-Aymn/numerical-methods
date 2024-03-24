@@ -35,13 +35,13 @@ func main () {
     case "bisection":
     context.setStrategy(&methods.BisectionStrategy{})
     case "secant":
-      methods.Secant(&data)
+    context.setStrategy(&methods.SecantStrategy{})
     case "modified-secant":
-      methods.ModifiedSecant(&data)
+    context.setStrategy(&methods.ModifiedSecantStrategy{})
     case "newton":
-      methods.Newton(&data)
+    context.setStrategy(&methods.NewtonStrategy{})
     case "fixed-point":
-      methods.FixedPoint(&data)
+    context.setStrategy(&methods.FixedPointStrategy{})
     default:
       fmt.Println("choose another method")
   }
@@ -49,7 +49,6 @@ func main () {
   // excute strategy
   context.executeStrategy(&data)
 }
-
 
 // Strategy pattern implentation
 type Strategy interface {
@@ -67,5 +66,4 @@ func (c *Context) setStrategy(strategy Strategy) {
 func (c *Context) executeStrategy(d *common.Data) {
   c.strategy.Execute(d)
 }
-
 

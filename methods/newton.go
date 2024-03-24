@@ -6,7 +6,15 @@ import (
   "sqrt/common"
 )
 
-func Newton (d *common.Data) {
+type NewtonRecord struct{
+  X float64
+  Fx float64
+  Fdx float64
+}
+
+type NewtonStrategy struct {}
+
+func (s *NewtonStrategy) Execute(d *common.Data) {
 
   // construct record
   record := NewtonRecord{

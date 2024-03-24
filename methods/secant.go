@@ -6,8 +6,9 @@ import (
   "sqrt/common"
 )
 
-type Secant struct {}
-func Secant (d *common.Data) {
+type SecantStrategy struct {}
+
+func (s *SecantStrategy) Execute(d *common.Data) {
   // calculateN
   n, _ := secantCalculateN(d.A, d.B, d.E)
 
@@ -25,11 +26,11 @@ func Secant (d *common.Data) {
   fmt.Println("------------------- ")
 }
 
-func secantCalculateN(a float64, b float64, e float64) (float64, error) {
+var secantCalculateN = func(a float64, b float64, e float64) (float64, error) {
   return math.Ceil((math.Log2((b-a) / (e)))), nil
 }
 
-func secantIterate (r *Record, f *string, n *float64, e float64) {
+var secantIterate = func (r *Record, f *string, n *float64, e float64) {
   var i = 1
   for{
     // f() calculations

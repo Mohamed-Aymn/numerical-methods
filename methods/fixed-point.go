@@ -6,7 +6,15 @@ import (
   "sqrt/common"
 )
 
-func FixedPoint (d *common.Data) {
+type FixedPointRecord struct{
+  X float64
+  Fx float64
+  Gx float64
+}
+
+type FixedPointStrategy struct {}
+
+func (s *FixedPointStrategy) Execute(d *common.Data) {
 
   // construct record
   record := FixedPointRecord{

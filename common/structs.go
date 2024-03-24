@@ -11,7 +11,3 @@ type Data struct {
   N int     `json:"n"`
 }
 
-type Secant struct {}
-type ModifiedSecant struct {}
-type Newton struct {}
-type FixedPoint struct {}

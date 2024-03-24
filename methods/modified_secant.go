@@ -6,7 +6,9 @@ import (
   "sqrt/common"
 )
 
-func ModifiedSecant (d *common.Data) {
+type ModifiedSecantStrategy struct {}
+
+func (s *ModifiedSecantStrategy) Execute(d *common.Data) {
   // calculateN
   n, _ := modifiedSecantCalculateN(d.A, d.B, d.E)
 

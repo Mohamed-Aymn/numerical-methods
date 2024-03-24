@@ -9,14 +9,3 @@ type Record struct {
   Fc float64
 }
 
-type NewtonRecord struct{
-  X float64
-  Fx float64
-  Fdx float64
-}
-
-type FixedPointRecord struct{
-  X float64
-  Fx float64
-  Gx float64
-}
