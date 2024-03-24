@@ -39,7 +39,7 @@ func secantIterate (r *Record, f *string, n *float64, e float64) {
       r.Fb = fb
     }
 
-    r.C = (r.B - r.Fb) * ( (r.B - r.A) / (r.Fb - r.Fa) )
+    r.C = r.B - r.Fb * ( (r.B - r.A) / (r.Fb - r.Fa) )
     fc, _ := common.OneVariableFunction(*f, r.C)
     r.Fc = fc
 

@@ -61,7 +61,7 @@ func iterate(r *Record, f *string, n *float64, e float64) {
 		}
 
 		// swap
-		if r.Fa*r.Fc > 1 {
+		if r.Fa*r.Fc > 0 {
 			r.A = r.C
 		} else {
 			r.B = r.C
