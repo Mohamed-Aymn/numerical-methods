@@ -37,7 +37,8 @@ func main () {
     methods.Secant(&data)
   case "modified-secant":
     methods.ModifiedSecant(&data)
-  //case "newton-raphson":
+  case "newton":
+    methods.Newton(&data)
   //case "fixed-point":
   default:
     fmt.Println("choose another method")

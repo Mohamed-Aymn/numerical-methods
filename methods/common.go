@@ -8,3 +8,9 @@ type Record struct {
   Fb float64
   Fc float64
 }
+
+type NewtonRecord struct{
+  X float64
+  Fx float64
+  Fdx float64
+}
