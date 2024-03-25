@@ -14,7 +14,7 @@ type NewtonRecord struct{
 
 type NewtonStrategy struct {}
 
-func (s *NewtonStrategy) Execute(d *common.Data) {
+func (s *NewtonStrategy) Execute(d *common.Data) float64 {
 
   // construct record
   record := NewtonRecord{
@@ -27,6 +27,8 @@ func (s *NewtonStrategy) Execute(d *common.Data) {
   fmt.Println("------------------- ")
   fmt.Println("*** The Final Result is: ", record.X)
   fmt.Println("------------------- ")
+
+  return record.X
 }
 
 func newtonIterate (r *NewtonRecord, f *string, d *string, e float64, n *int) {

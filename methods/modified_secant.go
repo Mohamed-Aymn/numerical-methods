@@ -8,7 +8,7 @@ import (
 
 type ModifiedSecantStrategy struct {}
 
-func (s *ModifiedSecantStrategy) Execute(d *common.Data) {
+func (s *ModifiedSecantStrategy) Execute(d *common.Data) float64 {
   // calculateN
   n, _ := modifiedSecantCalculateN(d.A, d.B, d.E)
 
@@ -24,6 +24,8 @@ func (s *ModifiedSecantStrategy) Execute(d *common.Data) {
   fmt.Println("------------------- ")
   fmt.Println("*** The Final Result is: ", record.C)
   fmt.Println("------------------- ")
+
+  return record.C
 }
 
 func modifiedSecantCalculateN(a float64, b float64, e float64) (float64, error) {

@@ -8,7 +8,7 @@ import (
 
 type SecantStrategy struct {}
 
-func (s *SecantStrategy) Execute(d *common.Data) {
+func (s *SecantStrategy) Execute(d *common.Data) float64{
   // calculateN
   n, _ := secantCalculateN(d.A, d.B, d.E)
 
@@ -24,6 +24,8 @@ func (s *SecantStrategy) Execute(d *common.Data) {
   fmt.Println("------------------- ")
   fmt.Println("*** The Final Result is: ", record.C)
   fmt.Println("------------------- ")
+
+  return record.C
 }
 
 var secantCalculateN = func(a float64, b float64, e float64) (float64, error) {

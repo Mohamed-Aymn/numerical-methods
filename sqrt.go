@@ -52,7 +52,7 @@ func main () {
 
 // Strategy pattern implentation
 type Strategy interface {
-  Execute(data *common.Data)
+  Execute(data *common.Data) float64
 }
 type Context struct {
   strategy Strategy

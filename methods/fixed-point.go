@@ -14,7 +14,7 @@ type FixedPointRecord struct{
 
 type FixedPointStrategy struct {}
 
-func (s *FixedPointStrategy) Execute(d *common.Data) {
+func (s *FixedPointStrategy) Execute(d *common.Data) float64 {
 
   // construct record
   record := FixedPointRecord{
@@ -27,6 +27,8 @@ func (s *FixedPointStrategy) Execute(d *common.Data) {
   fmt.Println("------------------- ")
   fmt.Println("*** The Final Result is: ", record.Gx)
   fmt.Println("------------------- ")
+
+  return record.Gx
 }
 
 func fixedPointIterate (r *FixedPointRecord, f *string, g *string, e float64, n *int) {

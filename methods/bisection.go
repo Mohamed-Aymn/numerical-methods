@@ -9,7 +9,7 @@ import (
 
 type BisectionStrategy struct {}
 
-func (s *BisectionStrategy) Execute(d *common.Data) {
+func (s *BisectionStrategy) Execute(d *common.Data) float64 {
 	// check step
 	check(d.F, d.A, d.B)
 
@@ -27,6 +27,8 @@ func (s *BisectionStrategy) Execute(d *common.Data) {
 	fmt.Println("------------------- ")
 	fmt.Println("*** The Final Result is: ", record.C)
 	fmt.Println("------------------- ")
+  
+  return record.C
 }
 
 var check = func(f string, a float64, b float64) {
